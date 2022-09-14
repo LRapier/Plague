@@ -91,9 +91,18 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 
     void Move()
     {
-        float x = Input.GetAxis("Horizontal") * moveSpeed;
-        float z = Input.GetAxis("Vertical") * moveSpeed;
-        rig.velocity = new Vector3(x, rig.velocity.y, z);
+        if(hatObject.activeSelf == true)
+        {
+            float x = Input.GetAxis("Horizontal") * (moveSpeed + 1);
+            float z = Input.GetAxis("Vertical") * (moveSpeed + 1);
+            rig.velocity = new Vector3(x, rig.velocity.y, z);
+        }
+        else
+        {
+            float x = Input.GetAxis("Horizontal") * moveSpeed;
+            float z = Input.GetAxis("Vertical") * moveSpeed;
+            rig.velocity = new Vector3(x, rig.velocity.y, z);
+        }
     }
 
     void TryJump()
@@ -142,6 +151,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             curHatTime = (float)stream.ReceiveNext();
     }
 
+    [PunRPC]
     public void KillPlayer()
     {
         player.SetActive(false);
