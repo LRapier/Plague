@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             if((curHatTime <= 0) && !GameManager.instance.gameEnded)
             {
                 GameManager.instance.photonView.RPC("KillPlayer", RpcTarget.All, id);
-                KillPlayer();
             }
         }
 
@@ -149,12 +148,6 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(curHatTime);
         else if(stream.IsReading)
             curHatTime = (float)stream.ReceiveNext();
-    }
-
-    [PunRPC]
-    public void KillPlayer()
-    {
-        player.SetActive(false);
     }
 
     public void Respawn()

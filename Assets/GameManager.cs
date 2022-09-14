@@ -119,5 +119,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             successorId = Random.Range(1, 4);
         GiveHat(successorId, false);
         ++playersDead;
+        player.player.SetActive(false);
     }
 }
