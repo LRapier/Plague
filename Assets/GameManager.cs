@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [HideInInspector]
     public int playersNum;
     public int playersDead;
+    public int successorId;
 
     public static GameManager instance;
 
@@ -114,9 +115,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     void KillPlayer(int playerId)
     {
         PlayerController player = GetPlayer(playerId);
-        int successorId = Random.Range(1, 4);
+        int successorId = 1;
         while(GetPlayer(successorId).player.activeSelf == false)
-            successorId = Random.Range(1, 4);
+            successorId = successorId + 1;
         GiveHat(successorId, false);
         ++playersDead;
         player.player.SetActive(false);
