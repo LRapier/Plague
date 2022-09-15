@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PlayerController player = GetPlayer(playerId);
         int successorId = 1;
-        while(GetPlayer(successorId).player.activeSelf == false)
+        while (GetPlayer(successorId).isDead)
             successorId = successorId + 1;
         GiveHat(successorId, false);
         ++playersDead;

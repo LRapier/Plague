@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
 {
     [HideInInspector]
     public int id;
-    public bool isPoisoned;
+    public bool isDead = false;
+    public bool isPoisoned = false;
 
     [Header("Info")]
     public float moveSpeed;
@@ -66,6 +67,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             if((curHatTime <= 0) && !GameManager.instance.gameEnded)
             {
+                isDead = true;
                 GameManager.instance.photonView.RPC("KillPlayer", RpcTarget.All, id);
             }
         }
