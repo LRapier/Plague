@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IPunObservable
             if((curHatTime <= 0) && !GameManager.instance.gameEnded)
             {
                 isDead = true;
-                GameManager.instance.photonView.RPC("KillPlayer", RpcTarget.All, id);
+                GameManager.instance.photonView.RPC("KillPlayer", RpcTarget.AllBuffered, id);
             }
         }
 

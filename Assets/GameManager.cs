@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void GiveAwayPoison(int victimId)
     {
+        GetPlayer(playerWithHat).SetHat(false);
         playerWithHat = victimId;
         GetPlayer(victimId).SetHat(true);
         hatPickupTime = Time.time;
@@ -117,7 +118,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         int successorId = 1;
         while(GetPlayer(successorId).isDead)
             successorId = successorId + 1;
-        GiveAwayPoison(successorId);
+        GiveHat(successorId, false);
         ++playersDead;
         player.player.SetActive(false);
     }
