@@ -79,7 +79,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void GiveAwayPoison(int victimId)
     {
-        GetPlayer(playerWithHat).SetHat(false);
         playerWithHat = victimId;
         GetPlayer(victimId).SetHat(true);
         hatPickupTime = Time.time;
