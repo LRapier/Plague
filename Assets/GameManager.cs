@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         int successorId = 1;
         while(GetPlayer(successorId).isDead)
             successorId = successorId + 1;
-        GiveHat(successorId, false);
+        GiveAwayPoison(successorId);
         ++playersDead;
         player.player.SetActive(false);
     }
